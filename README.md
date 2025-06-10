@@ -18,12 +18,11 @@ pnpm install
 
 ## Configuration
 
-1.  Create a `.env` file in the project root.
-2.  Add your Gemini API key to the `.env` file:
+1. Create a `.env` file in the project root.
+2. Add your Gemini API key to the `.env` file:
 
-    ```
-    GEMINI_API_KEY=YOUR_API_KEY
-    ```
+```GEMINI_API_KEY=YOUR_API_KEY
+```
 
 ## Usage
 
