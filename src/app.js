@@ -1,26 +1,41 @@
-import { GoogleGenAI } from "@google/genai"
-import { debug } from "node:console"
-import readline from "node:readline"
+import { OpenRouter } from "@openrouter/sdk";
+import readline from "node:readline";
 
-const apiKey = process.env.GEMINI_API_KEY
-
-const ai = new GoogleGenAI({apiKey: apiKey})
+const apiKey = process.env.GEMINI_API_KEY;
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
-})
+  output: process.stdout,
+});
+const openRouter = new OpenRouter({
+  apiKey: apiKey,
+});
 
+const stream = await openrouter.chat.send({
+  model: "arcee-ai/trinity-large-preview:free",
+  messages: [
+    {
+      role: "user",
+      content: "How many r's are in the word 'strawberry'?",
+    },
+  ],
+  stream: true,
+});
 
-async function main(){
-  const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
-    contents: "salut gimini"
-  })
-  console.log(response.text)
+let response = "";
+for await (const chunk of stream) {
+  const content = chunk.choices[0]?.delta?.content;
+  if (content) {
+    response += content;
+    process.stdout.write(content);
+  }
+
+  // Usage information comes in the final chunk
+  if (chunk.usage) {
+    console.log("\nReasoning tokens:", chunk.usage.reasoningTokens);
+  }
 }
 
-main()
-rl.question("Entrez votre prompte: \n \x1b[32m + \x1b[0m", prompt => {
-  rl.close()
-})
+rl.question("Entrez votre prompte: \n \x1b[32m + \x1b[0m", (prompt) => {
+  rl.close();
+});

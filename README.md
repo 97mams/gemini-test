@@ -4,9 +4,9 @@ A simple Node.js project to explore the Gemini API, showcasing basic functionali
 
 ## Prerequisites
 
-* Node.js (version 18 or higher)
-* npm (or pnpm)
-* A Gemini API key (Get one at [https://ai.google.dev/](https://ai.google.dev/))
+- Node.js (version 18 or higher)
+- npm (or pnpm)
+- A Gemini API key (Get one at [https://ai.google.dev/](https://ai.google.dev/))
 
 ## Installation
 
@@ -22,10 +22,11 @@ pnpm install
 2. Add your Gemini API key to the `.env` file:
 
 ```GEMINI_API_KEY=YOUR_API_KEY
+
 ```
 
 ## Usage
 
 ```bash
-node --env-file:.env src/index.js
+node --env-file:.env src/app.js
 ```
