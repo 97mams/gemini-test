@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --env-file=.env src/app.js"
+    "dev": "node --env-file=.env src/app.js",
+    "build": "node --experimental-sea-config sea-config.json"
   },
   "keywords": [],
   "author": "",
