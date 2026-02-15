@@ -3,6 +3,18 @@ import { OpenRouter } from "@openrouter/sdk";
 const apiKey = process.env.GEMINI_API_KEY;
 
 export async function generate(prompt) {
+  const context = `Generate a short Git commit message in English based on this git diff.
+
+  Format:
+  <type>: <body>
+
+  Rules:
+  - Use conventional types (feat, fix, refactor, chore, docs, test)
+  - Present tense
+  - One line only
+
+  Git diff:${prompt}`;
+
   const openrouter = new OpenRouter({
     apiKey: apiKey,
   });
@@ -13,7 +25,7 @@ export async function generate(prompt) {
       messages: [
         {
           role: "user",
-          content: prompt,
+          content: context,
         },
       ],
       stream: true,
