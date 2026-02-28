@@ -20,6 +20,22 @@ function changeDirectory(test) {
       return;
     }
 
-    generate(stdout);
+    generate(stdout)
+      .then((response) => {
+        exec(`git commit -m "${response}"`, (error, stdout, stderr) => {
+          if (error) {
+            console.error(`Error executing git commit: ${error.message}`);
+            return;
+          }
+          if (stderr) {
+            console.error(`Error output: ${stderr}`);
+            return;
+          }
+          console.log(`Git commit successful: ${stdout}`);
+        });
+      })
+      .catch((error) => {
+        console.error("Error generating commit message:", error);
+      });
   });
 }
