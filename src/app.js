@@ -1,3 +1,4 @@
+import "dotenv/config.js";
 import readline from "node:readline";
 import { generate } from "./agenAi/openRouter.js";
 

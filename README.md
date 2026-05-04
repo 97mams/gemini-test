@@ -28,5 +28,5 @@ pnpm install
 ## Usage
 
 ```bash
-node --env-file:.env src/app.js
+node -r dotenv/config src/app.js
 ```

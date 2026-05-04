@@ -21,7 +21,7 @@ export async function generate(prompt) {
 
   const stream = await openrouter.chat.send({
     chatGenerationParams: {
-      model: "arcee-ai/trinity-large-preview:free",
+      model: "openai/gpt-3.5-turbo",
       messages: [
         {
           role: "user",

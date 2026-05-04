@@ -11,11 +11,18 @@ importers:
       '@openrouter/sdk':
         specifier: ^0.8.0
         version: 0.8.0
+      dotenv:
+        specifier: ^17.4.2
+        version: 17.4.2
 
 packages:
 
   '@openrouter/sdk@0.8.0':
     resolution: {integrity: sha512-hmCY5CE/adBmwZmrwuSx7Pw5UngcyuA9FvgpouyWEX8m283omLD1BqJlYYkLdVoUdI8iGNFHKezH2CeJqsVymw==}
+
+  dotenv@17.4.2:
+    resolution: {integrity: sha512-nI4U3TottKAcAD9LLud4Cb7b2QztQMUEfHbvhTH09bqXTxnSie8WnjPALV/WMCrJZ6UV/qHJ6L03OqO3LcdYZw==}
+    engines: {node: '>=12'}
 
   zod@3.25.56:
     resolution: {integrity: sha512-rd6eEF3BTNvQnR2e2wwolfTmUTnp70aUTqr0oaGbHifzC3BKJsoV+Gat8vxUMR1hwOKBs6El+qWehrHbCpW6SQ==}
@@ -25,5 +32,7 @@ snapshots:
   '@openrouter/sdk@0.8.0':
     dependencies:
       zod: 3.25.56
+
+  dotenv@17.4.2: {}
 
   zod@3.25.56: {}

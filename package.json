@@ -13,6 +13,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.10.0",
   "dependencies": {
-    "@openrouter/sdk": "^0.8.0"
+    "@openrouter/sdk": "^0.8.0",
+    "dotenv": "^17.4.2"
   }
 }

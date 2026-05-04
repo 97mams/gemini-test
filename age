@@ -1,0 +1,77 @@
+[1mdiff --git a/README.md b/README.md[m
+[1mindex 5424d82..75f498e 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -28,5 +28,5 @@[m [mpnpm install[m
+ ## Usage[m
+ [m
+ ```bash[m
+[31m-node --env-file:.env src/app.js[m
+[32m+[m[32mnode -r dotenv/config src/app.js[m
+ ```[m
+[1mdiff --git a/package.json b/package.json[m
+[1mindex 372aa4a..fa7eeb6 100644[m
+[1m--- a/package.json[m
+[1m+++ b/package.json[m
+[36m@@ -13,6 +13,7 @@[m
+   "license": "ISC",[m
+   "packageManager": "pnpm@10.10.0",[m
+   "dependencies": {[m
+[31m-    "@openrouter/sdk": "^0.8.0"[m
+[32m+[m[32m    "@openrouter/sdk": "^0.8.0",[m
+[32m+[m[32m    "dotenv": "^17.4.2"[m
+   }[m
+ }[m
+[1mdiff --git a/pnpm-lock.yaml b/pnpm-lock.yaml[m
+[1mindex d10ab1e..807b893 100644[m
+[1m--- a/pnpm-lock.yaml[m
+[1m+++ b/pnpm-lock.yaml[m
+[36m@@ -11,12 +11,19 @@[m [mimporters:[m
+       '@openrouter/sdk':[m
+         specifier: ^0.8.0[m
+         version: 0.8.0[m
+[32m+[m[32m      dotenv:[m
+[32m+[m[32m        specifier: ^17.4.2[m
+[32m+[m[32m        version: 17.4.2[m
+ [m
+ packages:[m
+ [m
+   '@openrouter/sdk@0.8.0':[m
+     resolution: {integrity: sha512-hmCY5CE/adBmwZmrwuSx7Pw5UngcyuA9FvgpouyWEX8m283omLD1BqJlYYkLdVoUdI8iGNFHKezH2CeJqsVymw==}[m
+ [m
+[32m+[m[32m  dotenv@17.4.2:[m
+[32m+[m[32m    resolution: {integrity: sha512-nI4U3TottKAcAD9LLud4Cb7b2QztQMUEfHbvhTH09bqXTxnSie8WnjPALV/WMCrJZ6UV/qHJ6L03OqO3LcdYZw==}[m
+[32m+[m[32m    engines: {node: '>=12'}[m
+[32m+[m
+   zod@3.25.56:[m
+     resolution: {integrity: sha512-rd6eEF3BTNvQnR2e2wwolfTmUTnp70aUTqr0oaGbHifzC3BKJsoV+Gat8vxUMR1hwOKBs6El+qWehrHbCpW6SQ==}[m
+ [m
+[36m@@ -26,4 +33,6 @@[m [msnapshots:[m
+     dependencies:[m
+       zod: 3.25.56[m
+ [m
+[32m+[m[32m  dotenv@17.4.2: {}[m
+[32m+[m
+   zod@3.25.56: {}[m
+[1mdiff --git a/src/agenAi/openRouter.js b/src/agenAi/openRouter.js[m
+[1mindex f30c72d..1fc8bd5 100644[m
+[1m--- a/src/agenAi/openRouter.js[m
+[1m+++ b/src/agenAi/openRouter.js[m
+[36m@@ -21,7 +21,7 @@[m [mexport async function generate(prompt) {[m
+ [m
+   const stream = await openrouter.chat.send({[m
+     chatGenerationParams: {[m
+[31m-      model: "arcee-ai/trinity-large-preview:free",[m
+[32m+[m[32m      model: "openai/gpt-3.5-turbo",[m
+       messages: [[m
+         {[m
+           role: "user",[m
+[1mdiff --git a/src/app.js b/src/app.js[m
+[1mindex 17ff1d7..af34d4e 100644[m
+[1m--- a/src/app.js[m
+[1m+++ b/src/app.js[m
+[36m@@ -1,3 +1,4 @@[m
+[32m+[m[32mimport "dotenv/config.js";[m
+ import readline from "node:readline";[m
+ import { generate } from "./agenAi/openRouter.js";[m
+ [m
